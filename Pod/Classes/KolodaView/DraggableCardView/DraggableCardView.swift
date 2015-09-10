@@ -378,4 +378,25 @@ public class DraggableCardView: UIView {
             })
         }
     }
+    
+    func swipeNone () {
+        if !dragBegin {
+            
+            let finishPoint = CGPoint(x: center.y, y: CGRectGetHeight(UIScreen.mainScreen().bounds) * 2)
+            self.delegate?.cardSwippedInDirection(self, direction: SwipeResultDirection.None)
+            UIView.animateWithDuration(cardSwipeActionAnimationDuration, delay: 0.0, options: .CurveLinear, animations: {
+                self.center = finishPoint
+                self.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
+                
+                return
+                },
+                completion: {
+                    _ in
+                    
+                    self.removeFromSuperview()
+                    
+                    return
+            })
+        }
+    }
 }

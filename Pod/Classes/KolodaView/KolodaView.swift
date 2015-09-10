@@ -409,7 +409,6 @@ public class KolodaView: UIView, DraggableCardDelegate {
             
             currentCardNumber--
             
-            
             if let dataSource = self.dataSource {
                 let firstCardContentView = dataSource.kolodaViewForCardAtIndex(self, index: UInt(currentCardNumber))
                 let firstCardOverlayView = dataSource.kolodaViewForCardOverlayAtIndex(self, index: UInt(currentCardNumber))
@@ -523,7 +522,7 @@ public class KolodaView: UIView, DraggableCardDelegate {
                 
                 switch direction {
                 case SwipeResultDirection.None:
-                    return
+                    frontCard.swipeNone()
                 case SwipeResultDirection.Left:
                     frontCard.swipeLeft()
                 case SwipeResultDirection.Right:
